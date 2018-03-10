@@ -34,6 +34,7 @@ node {
         }
     }
 
+    /*
      stage('Run kubectl') {
       container('kubectl') {
         sh "kubectl get pods"
@@ -45,4 +46,5 @@ node {
         sh "helm list"
       }
     }
+    */
 }
