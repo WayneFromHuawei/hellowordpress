@@ -1,7 +1,7 @@
 var assert = require('assert')
 
 function test() {
-  assert.equal(2 + 5, 7);
+  assert.equal(2 + 6, 8);
 }
 
 if (module == require.main) require('test').run(test);
