@@ -47,8 +47,8 @@ node {
       sh "./kubectl config set current-context default-context"
     }
     stage('deploy app') {
-      sh "./kubectl delete -f svc.yaml"
-      sh "./kubectl delete -f rc.yaml"
+      sh "set +e ; ./kubectl delete -f svc.yaml ; exit 0"
+      sh "set +e ; ./kubectl delete -f rc.yaml ; exit 0"
       sh "sleep 10"
       sh "./kubectl create -f rc.yaml"
       sh "./kubectl create -f svc.yaml"
