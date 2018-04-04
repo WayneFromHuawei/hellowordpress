@@ -11,7 +11,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("ocb0001686/hellonode")
+        app = docker.build("ocb0001686/hellowordpress")
     }
 
     stage('Test image') {
