@@ -34,7 +34,7 @@ node {
         }
     }
 
-    
+    /*
     stage('download the kubectl') {
       sh "curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.7.3/bin/linux/amd64/kubectl"
       sh "chmod +x  kubectl"
@@ -46,11 +46,26 @@ node {
       sh "./kubectl config set-context default-context --cluster=default-cluster --user=default-admin"
       sh "./kubectl config set current-context default-context"
     }
+    */
+    
+    kubernetesDeploy( 
+        configs: '/var/lib/jenkins/.kube/config', 
+        dockerCredentials: [[credentialsId: 'cre_conn_prod1686', url: 'https://90.84.44.40:443']], 
+        kubeConfig: [path: ''], 
+        kubeconfigId: 'kubeconfig-1686demo', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], 
+        textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']){
+       kubectl delete -f rc.yaml
+       sleep 10
+       kubectl create -f rc.yaml 
+       kubectl create -f svc.yaml
+    }
+    
+    /*
     stage('deploy app') {
       sh "set +e ; ./kubectl delete -f rc.yaml ; exit 0"
       sh "sleep 10"
       sh "./kubectl create -f rc.yaml"
       sh "set +e ; ./kubectl create -f svc.yaml; exit 0"
     }
-    
+    */
 }
