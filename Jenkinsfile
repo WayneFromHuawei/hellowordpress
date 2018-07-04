@@ -48,7 +48,7 @@ node {
     }
     */
     
-kubernetesDeploy configs: '*', dockerCredentials: [[credentialsId: 'cre_conn_prod1686', url: 'https://90.84.44.40:443']], kubeConfig: [path: ''], kubeconfigId: 'kubeconfig-1686demo', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
+kubernetesDeploy configs: '*', dockerCredentials: [[credentialsId: 'cre_conn_prod1686', url: 'https://90.84.44.40:443']], kubeConfig: [path: '/var/lib/jenkins/.kube/config'], kubeconfigId: 'kubeconfig-1686demo', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
     /*
     stage('deploy app') {
       sh "set +e ; ./kubectl delete -f rc.yaml ; exit 0"
